@@ -2,12 +2,16 @@ import requests
 
 
 class Requests:
-    def get(self, url):
-        return requests.get(url)
+    @staticmethod
+    def get(url, headers):
 
-    def post(self, url, payload):
+        return requests.get(url, headers=headers)
+
+    @staticmethod
+    def post(url, headers, payload):
         result = requests.post(
-            str(url),
-            json=dict(payload),
+            url,
+            headers=headers,
+            json=payload
         )
         return result

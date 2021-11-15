@@ -1,18 +1,16 @@
-def test_get_api_token(post):
-    import json
-    response = json.loads(post.text)
-    assert 'accessToken' in response, "Token is missing"
-
-# //only for presentation
-    print("\nToken is:", response['accessToken'])
-
-    assert len(response['accessToken']) == 200, "Lenght of accessToken != 200"
 
 
-def test_get_status_code(post):
-    response = post.status_code
+def test_get_api_token(post_get_token):
+    assert post_get_token, "Length of accessToken != 200"
 
-    # only for presentation
-    print("\nStatus Code:", response)
 
-    assert response == 200, "Wrong Status Code, Must be 200"
+def test_get_status_code(post_get_status_code):
+    assert post_get_status_code == 200, "Wrong Status Code, Must be 200"
+
+
+def test_create_news(post_create_news):
+    assert post_create_news == 201
+
+
+def test_get_user_info(get_user_info):
+    assert get_user_info == 200
